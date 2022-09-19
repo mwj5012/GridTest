@@ -1,0 +1,95 @@
+[{
+    "code": "CJU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "서울특별시 서초구",
+    "fee": "상세 보기",
+    "unloader_name": "석포물류",
+    "phone": "010-1111-2222",
+    "unloader_date": "2014-10-01"
+}, {
+    "code": "RSU",
+    "name": "완도항 연안여객선터미널",
+    "abbreviation": "완도",
+    "address": "인천광역시 서구",
+    "fee": "상세 보기",
+    "unloader_name": "일조해운",
+    "phone": "010-1111-3333",
+    "unloader_date": "2015-10-01"
+}, {
+    "code": "ABU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "부산광역시 북구",
+    "fee": "상세 보기",
+    "unloader_name": "석포물류",
+    "phone": "010-2222-4444",
+    "unloader_date": "2016-10-01"
+}, {
+    "code": "CDU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "광주광역시 남구",
+    "fee": "상세 보기",
+    "unloader_name": "일조해운",
+    "phone": "010-1111-5555",
+    "unloader_date": "2017-10-01"
+}, {
+    "code": "EFU",
+    "name": "완도항 연안여객선터미널",
+    "abbreviation": "완도",
+    "address": "인천광역시 부평구",
+    "fee": "상세 보기",
+    "unloader_name": "석포물류",
+    "phone": "010-3333-8888",
+    "unloader_date": "2011-10-01"
+}, {
+    "code": "GHU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "대전광역시 중구",
+    "fee": "상세 보기",
+    "unloader_name": "일조해운",
+    "phone": "010-4444-1111",
+    "unloader_date": "2012-10-01"
+}, {
+    "code": "IJU",
+    "name": "완도항 연안여객선터미널",
+    "abbreviation": "완도",
+    "address": "대구광역시 북구",
+    "fee": "상세 보기",
+    "unloader_name": "석포물류",
+    "phone": "010-1221-4443",
+    "unloader_date": "2020-10-01"
+}, {
+    "code": "KLU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "서울특별시 강남구",
+    "fee": "상세 보기",
+    "unloader_name": "일조해운",
+    "phone": "010-1234-1234",
+    "unloader_date": "2021-10-01"
+}, {
+    "code": "MNU",
+    "name": "완도항 연안여객선터미널",
+    "abbreviation": "완도",
+    "address": "서울특별시 강서구",
+    "fee": "상세 보기",
+    "unloader_name": "석포물류",
+    "phone": "010-5678-5678",
+    "unloader_date": "2022-10-01"
+}, {
+    "code": "OPU",
+    "name": "제주항 연안여객선터미널",
+    "abbreviation": "제주",
+    "address": "서울특별시 관악구",
+    "fee": "상세 보기",
+    "unloader_name": "일조해운",
+    "phone": "010-3456-3456",
+    "unloader_date": "2023-10-01"
+}
+
+
+
+]
