@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../static/style.css" type="text/css" media="screen">
+<meta charset="utf-8">
+<meta content="text/javascript" http-equiv="Content-Script-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="no-cache" http-equiv="Pragma">
+<meta content="-1" http-equiv="Expires">
+<meta content="width=1200" name="viewport">
+<meta content="AUIGrid API Documentation" name="apple-mobile-web-app-title">
+<meta content="AUIGrid API Documentation" property="og:title">
+<meta content="http://www.auisoft.net/documentation/auigrid" property="og:url">
+<meta content="AUIGrid API Documentation" property="og:description">
+<meta content="AUIGrid API Documentation" name="keywords">
+<script src="../static/doc.js" type="text/javascript"></script>
+<title>	AUIGrid Documentation</title>
+</head>
+<body>
+<div class="header">
+<div id="logo-bar">
+<a href="../index.html"><img src="../images/auisoft.png" alt="AUISoft" title="AUISoft"></a>
+</div>
+<span id="title">AUIGrid 3.0.11 Documentation</span>
+</div>
+<div class="classDescContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable"></table>
+<div style="margin-top:12px;margin-bottom:18px;">
+<span class="className">CustomRenderer</span>
+<div id="searchbox" class="searchbox">
+<span class="keyword"><input placeholder="검색어 입력" maxlength="255" class="box_window" name="i_query" id="i_query" type="text"></span>
+</div>
+</div>
+<div id="desc_top">
+<p></p>
+<p>커스텀 렌더러는 그리드에서 제공되는 기본 렌더러가 아닌 사용자(개발자)가 직접 출력하고자 하는 내용을 작성할 수 있는 칼럼 렌더러입니다.</p>
+<p>커스텀 렌더러는 칼럼 렌더러에 "CustomRenderer" 를 type으로 지정하고, 실제 사용자가 작성한 js 파일을 jsClass 값으로 설정합니다.</p>
+<p>커스텀 렌더러는 칼럼 레이아웃을 정의할 때 개별 칼럼의 renderer 속성 값인 Object 형태로 선언되어야 합니다.</p>
+<p><strong>칼럼의 renderer 속성의 type 으로만 설정 가능합니다.</strong></p>
+<p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">아래는 설정 예제 입니다.</span>
+<div class="mxmlSyntax" id="mxmlSyntax"><pre>
+var columnLayout = [ {
+...
+}, {
+     dataField : "close",
+     headerText : "현재가",
+     width : 160,
+     renderer : {
+          type : "CustomRenderer", // 사용자 정의 렌더러 사용
+          jsClass : AUIGrid.MyStockRenderer // 작성한 사용자 정의 렌더러 JS
+     }
+}];
+</pre>
+<p><strong>커스텀 렌더러 사용에 대한 사전 스킬 요구 사항</strong><p>
+<ul><li>자바스크립트로 HTML 요소(Element)를 생성하고, 제어할 수 있는 스킬이 요구 됩니다.</li>
+<li>자바스크립트로 DOM 에 접근하여 CSS 클래스 및 style 을 추가, 삭제 등 제어할 수 있는 스킬이 요구 됩니다.</li></ul>
+<p><strong>커스텀 렌더러 사용의 장점</strong><p>
+<ul><li>AUIGrid 에서 제공하는 렌더러의 한계를 넘어 원하는 형태로 그리드 출력이 가능합니다.</li>
+<li>셀 또는 칼럼에 원하는 이벤트, 스타일 등 모든 행위를 사용자가 직접 컨트롤 할 수 있습니다.</li>
+<li>순수 JS 또는 jQuery 와 연동하여 더 풍부한 정보 출력이 가능합니다.</li></ul>
+<p><strong>커스텀 렌더러 사용의 단점</strong></p>
+ <ul><li>그리드에 출력된 형태 그대로 "엑셀로 저장" 을 할 수 없습니다.</li>
+<li>그룹핑, 정렬, 필터링 기능 사용에 제한이 있습니다.</li></ul>
+</div>
+</div>
+</div>
+<div class="summarySection">
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>Name</th><th>Description</th>
+</tr>
+<tr id="aliasFunction">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">aliasFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.11<br>
+<p>CustomRenderer 로 정의된 칼럼에서 엑셀, PDF 내보내기 할 때 재가공하여 값을 출력하고자 하는 경우 이 속성을 설정하십시오.</p>
+<p>aliasFunction 을 정의 하지 않은 경우, 기본값은 dataField 값 기준입니다.</p>
+<p>aliasFunction 은 함수를 지정해야 하며 함수 형태는 다음과 같습니다. </p>
+<ul>
+<li>rowIndex : 행 인덱스</li>
+<li>columnIndex : 칼럼 인덱스</li>
+<li>value : 원래 데이터의 해당 셀 값(value)</li>
+<li>headerText : 현재 칼럼의 헤더 텍스트</li>
+<li>item : 해당 행에 출력되고 있는 행 아이템 객체 (Object)</li>
+<li>dataField : 행 아이템에서 현재 칼럼이 출력되고 있는 데이터의 KeyField</li>
+</ul>
+<pre>aliasFunction : function(rowIndex, columnIndex, value, headerText, item, dataField) {
+   var myString = "";
+   // 로직 처리
+   // 여기서 value 를 원하는 형태로 재가공 또는 포매팅하여 반환하십시오.
+   return myString;
+}</pre>
+<p>함수의 반환값이 곧 엑셀, PDF 등 내보내기 값입니다.</p>
+ 기본값(default) : <code>null;</code>.</td>
+</tr>
+<tr id="jsClass ">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">jsClass </span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Class<br>
+ <p>사용자가 그리드의 렌더러로 작성한 클래스를 설정합니다.</p>
+ <p>작성한 클래스는 AUIGrid.Class 를 이용하여 AUIGrid.RendererBase 클래스를 확장(extends)하여 작성하여야 합니다.</p>
+ <p><a href="../../samples/renderer_custom_desc.html?ren_desc&theme=default" target="_blank">관련 내용 보기</a></p>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+</table>
+</div>
+<div class="MainContent">
+<p></p>
+<center class="copyright">Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved</center>
+</div>
+</body>
+</html>
+<!--Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved-->

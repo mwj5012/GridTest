@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../static/style.css" type="text/css" media="screen">
+<meta charset="utf-8">
+<meta content="text/javascript" http-equiv="Content-Script-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="no-cache" http-equiv="Pragma">
+<meta content="-1" http-equiv="Expires">
+<meta content="width=1200" name="viewport">
+<meta content="AUIGrid API Documentation" name="apple-mobile-web-app-title">
+<meta content="AUIGrid API Documentation" property="og:title">
+<meta content="http://www.auisoft.net/documentation/auigrid" property="og:url">
+<meta content="AUIGrid API Documentation" property="og:description">
+<meta content="AUIGrid API Documentation" name="keywords">
+<script src="../static/doc.js" type="text/javascript"></script>
+<title>	AUIGrid Documentation</title>
+</head>
+<body>
+<div class="header">
+<div id="logo-bar">
+<a href="../index.html"><img src="../images/auisoft.png" alt="AUISoft" title="AUISoft"></a>
+</div>
+<span id="title">AUIGrid 3.0.11 Documentation</span>
+</div>
+<div class="classDescContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable"></table>
+<div style="margin-top:12px;margin-bottom:18px;">
+<span class="className">StaticUtils</span>
+<div id="searchbox" class="searchbox">
+<span class="keyword"><input placeholder="검색어 입력" maxlength="255" class="box_window" name="i_query" id="i_query" type="text"></span>
+</div>
+</div>
+<div id="desc_top">
+<p></p>
+<p>AUIGrid 에서 사용 가능한 유틸성 정적(Static) 속성 및 함수 리스트입니다.</p>
+<p>유틸성 정적(Static) 속성 및 함수는 AUIGrid 생성 여부와 관계 없이 어디서든 사용 가능합니다.</p>
+<p></p>
+</div>
+</div>
+<div class="summarySection">
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>Name</th><th>Description</th>
+</tr>
+<tr id="create">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">create</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Method &nbsp; <span class="label">Version: </span>2.7.0<br>
+ <p>그리드를 최초로 생성하는 메소드입니다.</p>
+ <p>파라메터 설명</p>
+ <ul>
+ <li>pid : (String) 그리드가 생성될 Div 의 id</li>
+ <li>columnLayout : (Object) 그리드 생성하고자 하는 칼럼 레이아웃</li>
+ <li>gridProps : (Object) 그리드 생성 시 변경할 그리드 속성(key-value) 객체</li>
+ </ul>
+ <p>Return : (String) 그리드가 생성될 Div의 id 를 반환합니다.(즉, 파라메터로 넣은 pid 반환)</p> 
+ </td>
+</tr>
+<tr id="defaultProps">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">defaultProps</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object &nbsp; <span class="label">Version: </span>2.11.0<br>
+ <p>AUIGrid 의 기본 속성을 작성할 수 있는 정적(Static) 속성입니다.</p>
+ <p>AUIGrid 를 생성 할 때 기본적으로 defaultProps 를 확장하여 생성합니다.</p>
+ <p>따라서 매 페이지의 그리드를 생성할 때 공통적인 사항 또는 다국어 작성을 위한 텍스트 속성을 여기서 작성하십시오.</p>
+ <p>이 함수의 사용 예는 다음과 같습니다.</p>
+ <pre>
+ AUIGrid.defaultProps = {
+      editable : true,
+      filterOkText : "Okay",
+      filterCancelText : "Cancel"
+ };</pre>
+ <p>위와 같이 작성한 코드를 프로젝트 공용으로 포함시키는 common.js(예를 들면 common.js 임, 추가로 AUIGridDefault.js 라고 만들어도 무관)에 추가하십시오.</p>
+ <p>그러면 그리드를 생성할 때 defaultProps 를 기본값으로 적용시켜 생성 합니다.</p>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="formatDate">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">formatDate</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>2.8.1<br>
+ <p>AUIGrid 에서 사용하는 날짜 포맷 방식을 그대로 사용하고자 할 때 사용 할 수 있는 날짜 포맷 함수입니다.</p>
+ <p>파라메터 설명</p>
+ <ul>
+ <li>date : (String) 포맷하고자 하는 날짜</li>
+ <li>formatString : (String) 날짜를 원하는 형태로 출력하고자 하는 포맷 형식</li>
+ <p>지정 가능한 날짜 포맷스트링(formatString) 은 다음과 같습니다.</p>
+   <ul style="list-style: square;list-style-position: inside;">
+    <li>yy : 연(Year) 2자리로 표현(예:15)</li>
+    <li>yyyy : 연(Year) 4자리로 표현(예:2015)</li>
+    <li>m : 월(Month) 1자리로 표현</li>
+    <li>mm : 월(Month) 2자리로 표현</li>
+      <li>mmm : 월(Month) 영문 이름 3자리로 표현(예:Jan)</li>
+    <li>mmmm : 월(Month) 영문 전체 이름으로 표현(예:January)</li>
+    <li>d : 날짜(Day) 1자리수로 표현(예:1)</li>
+    <li>dd  : 날짜(Day) 2자리수로 표현(예:01)</li>
+    <li>ddd : 한글 요일로 표현(예:월, 화, 수)</li>
+    <li>dddd : 영문 요일 3자리 이름으로 표현(예:Mon, Tue)</li>
+    <li>h : 시(Hours) 12시간제 1자리로 표현</li>
+    <li>hh : 시(Hours) 12시간제 2자리로 표현</li>
+    <li>H : 시(Hours) 24시간제 1자리로 표현</li>
+    <li>HH : 시(Hours) 24시간제 2자리로 표현</li>
+    <li>M : 분(Minutes) 1자리로 표현</li>
+    <li>MM : 분(Minutes) 2자리로 표현</li>
+    <li>s : 초(Seconds) 1자리로 표현</li>
+    <li>ss : 초(Seconds) 2자리로 표현</li>
+    <li>t : 오전, 오후를 한글로 표현(예: 오전, 오후)</li>
+    <li>tt : 오전, 오후를 am 또는 pm으로 표현</li>
+    <li>T :  오전, 오후를 A 또는 P로 표현</li>
+    <li>TT  : 오전, 오후를 AM 또는 PM으로 표현</li>
+   </ul>
+ </ul>
+ <p>이 함수의 사용 예는 다음과 같습니다.</p>
+ <pre>
+ var fd = AUIGrid.formatDate("2017/01/01", "yyyy년 mm월 dd일");
+ alert(fd); // "2017년 01월 01일" 출력됨.
+ var fd2 = AUIGrid.formatDate("20170101", "yyyy. m. d");
+ alert(fd2); // "2017. 1. 1." 출력됨
+ var fd3 = AUIGrid.formatDate(new Date(), "yyyy. m. d. hh:MM:ss");
+ alert(fd3); // 오늘 현재 날짜 및 시간 출력됨</pre>
+  <p>Return : (String) 날짜를 지정한 포맷 형식으로 포매팅하여 반환합니다.</p> 
+ </td>
+</tr>
+<tr id="formatNumber">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">formatNumber</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>2.8.1<br>
+ <p>AUIGrid 에서 사용하는 숫자 포맷 방식을 그대로 사용하고자 할 때 사용 할 수 있는 숫자 포맷 함수입니다.</p>
+ <p>파라메터 설명</p>
+ <ul>
+ <li>number : (Number) 포맷하고자 하는 숫자</li>
+ <li>formatString : (String) 숫자를 원하는 형태로 출력하고자 하는 포맷 형식</li>
+ <li>rouding : (String) 포매팅할 때 지정된 소수점 뒤를 반올림(rounding, "기본값"), 내림(ceil), 올림(floor) 처리할지를 지정합니다.(유효값 : "rounding", "ceil", "floor")</li> 
+ <p>숫자 포맷 스트링은 다음과 같습니다.</p>
+   <p>"0" 과 "#"의 차이는 "0"은 반드시 자리수를 차지하도록 채웁니다. "#"은 있는 경우 출력 시킴</p>
+   <ul style="list-style: square;list-style-position: inside;">
+    <li>###0 : 컴마 구분자 없이 정수 표현</li>
+    <li>#### : 컴마 구분자 없이 정수 표현, 0인 경우 공백 처리</li>
+    <li>#,##0 : 천단위 마다 컴마 구분자 정수 표현</li>
+    <li>#,### : 천단위 마다 컴마 구분자 정수 표현, 0인 경우 공백 처리</li>
+    <li>#,##0.0 : 천단위 마다 컴마 구분자 소수 1자리 의무 표현(소수 2자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.# : 천단위 마다 컴마 구분자 소수 있다면 1자리 표현, 0인 경우 공백 처리(소수 2자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.00 : 천단위 마다 컴마 구분자 소수 2자리 의무 표현(소수 3자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.0# : 천단위 마다 컴마 구분자 소수 1자리 의무, 2자리 있다면 표현(소수 3자리에서 기본적으로 반올림 처리)</li>
+    <li># ##0,00 또는 #.##0,00 와 같이 해외에서 사용하는 포맷 형식 지원함(즉, 천단위를 공백 또는 점으로 소수점을 컴마로 변경)</li>
+    <li>확장해서 "000000" 로 지정하면 의무적으로 정수 6자리를 출력함. 값이 1인 경우 포매팅 되어 "000001" 로 출력 시킴</li>
+   </ul>
+ </ul>
+ <p>이 함수의 사용 예는 다음과 같습니다.</p>
+ <pre>
+ var fn = AUIGrid.formatNumber(123456.789, "#,##0");
+ alert(fn); // "123,457" 출력됨. (소수점이 기본적으로 반올림됨)
+ var fn2 = AUIGrid.formatNumber("123456.789", "#,##0", "floor");
+ alert(fn2); // "123,456" 출력됨
+ var fn3 = AUIGrid.formatNumber("123456.789", "#,##0.00");
+ alert(fn3); // "123,456.79" 출력됨</pre>
+  <p>Return : (String) 숫자를 지정한 포맷 형식으로 포매팅하여 반환합니다.</p> 
+ </td>
+</tr>
+<tr id="getActiveGrid">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">getActiveGrid</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.6<br>
+ <p>동일한 문서 객체 모델(DOM) 내에서 AUIGrid 가 포커스를 받은 경우 포커싱을 받은 그리드를 반환합니다.</p>
+ <p>예로 단일 페이지 내에서 2개의 그리드를 생성했을 때 사용자가 포커스를 준 그리드를 얻을 수 있습니다.</p>
+ <pre>
+ var curActiveGridID = AUIGrid.getActiveGrid();
+ alert(curActiveGridID);</pre>
+ <p>Return : (Boolean) 현재 포커스 받은 그리드가 있다면 해당 그리드가 생성될 때 설정한 Div의 id 를 반환합니다.(즉, 생성할 때 파라메터로 넣은 pid 반환)</p>
+ <p>만약 그리드가 아닌 다른 엘리먼트에 포커스가 있다면 null 을 반환합니다.</p>
+ </td>
+</tr>
+<tr id="getCreatedGridAll">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">getCreatedGridAll</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.6<br>
+ <p>동일한 문서 객체 모델(DOM) 내에서 생성된 모든 그리드를 반환합니다.</p>
+ <pre>
+ var gridIds = AUIGrid.getCreatedGridAll();
+ alert(gridIds.length);</pre>
+ <p>Return : (Array) 생성된 그리드의 부모 Div의 id 가 담긴 배열을 반환합니다.(즉, 생성할 때 파라메터로 넣은 pid 반환)</p>
+ </td>
+</tr>
+<tr id="makeValueMasked">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">makeValueMasked</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.11<br>
+ <p>주어진 값을 마스킹 적용 시켜 반환합니다.</p>
+ <p>파라메터 설명</p>
+ <ul>
+ <li>mask : (String) 마스크 설정</li>
+ <li>value : (String) 마스크 적용 시킬 값</li>
+ </ul>
+ <pre>
+ var masked = AUIGrid.makeValueMasked("99:99:99", "123456");
+ console.log(masked); // 출력값 : 12:34:56
+ 
+ var masked = AUIGrid.makeValueMasked("(999) 999-999-999", "123456789123");
+ console.log(masked); // 출력값 : (123) 456-789-123 </pre>
+ <p>Return : (String) 마스킹 적용된 값. 주어진 값이 마스킹 유효 값이 아닌 경우 null 반환</p>
+ </td>
+</tr>
+<tr id="makeValueUnmasked">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">makeValueUnmasked</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.11<br>
+ <p>마스킹 적용된 값을 해제 시켜 반환합니다.</p>
+ <p>파라메터 설명</p>
+ <ul>
+ <li>mask : (String) 마스크 설정</li>
+ <li>value : (String) 마스크 적용된 값</li>
+ </ul>
+ <pre>
+ var masked = AUIGrid.makeValueUnmasked("99:99:99", "12:34:56");
+ console.log(masked); // 출력값 : 123456
+ 
+ var masked = AUIGrid.makeValueUnmasked("(999) 999-999-999", "(123) 456-789-123");
+ console.log(masked); // 출력값 : 123456789123 </pre>
+ <p>Return : (String) 마스킹 해제시킨 값. 주어진 값이 마스킹 유효 값이 아닌 경우 null 반환</p>
+ </td>
+</tr>
+<tr id="releaseDate">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">releaseDate</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Property &nbsp; <span class="label">Version: </span>2.7.0<br>
+ <p>AUIGrid 의 배포 날짜를 반환합니다.</p>
+ <p>현재 사용하고 있는 AUIGrid 의 배포 정보를 알고자 한다면 다음처럼 알 수 있습니다.</p>
+ <pre>
+ alert(AUIGrid.releaseDate);</pre>
+ </td>
+</tr>
+<tr id="version">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">version</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Property &nbsp; <span class="label">Version: </span>2.7.0<br>
+ <p>AUIGrid 버전 정보를 반환합니다.</p>
+ <p>현재 사용하고 있는 AUIGrid 의 버전 정보를 알고자 한다면 다음처럼 알 수 있습니다.</p>
+ <pre>
+ alert(AUIGrid.version);</pre>
+ </td>
+</tr>
+</table>
+</div>
+<div class="MainContent">
+<p></p>
+<center class="copyright">Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved</center>
+</div>
+</body>
+</html>
+<!--Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved-->

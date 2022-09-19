@@ -1,0 +1,802 @@
+<!doctype html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../static/style.css" type="text/css" media="screen">
+<meta charset="utf-8">
+<meta content="text/javascript" http-equiv="Content-Script-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="no-cache" http-equiv="Pragma">
+<meta content="-1" http-equiv="Expires">
+<meta content="width=1200" name="viewport">
+<meta content="AUIGrid API Documentation" name="apple-mobile-web-app-title">
+<meta content="AUIGrid API Documentation" property="og:title">
+<meta content="http://www.auisoft.net/documentation/auigrid" property="og:url">
+<meta content="AUIGrid API Documentation" property="og:description">
+<meta content="AUIGrid API Documentation" name="keywords">
+<script src="../static/doc.js" type="text/javascript"></script>
+<title>	AUIGrid Documentation</title>
+</head>
+<body>
+<div class="header">
+<div id="logo-bar">
+<a href="../index.html"><img src="../images/auisoft.png" alt="AUISoft" title="AUISoft"></a>
+</div>
+<span id="title">AUIGrid 3.0.11 Documentation</span>
+</div>
+<div class="classDescContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable"></table>
+<div style="margin-top:12px;margin-bottom:18px;">
+<span class="className">Column</span>
+<div id="searchbox" class="searchbox">
+<span class="keyword"><input placeholder="검색어 입력" maxlength="255" class="box_window" name="i_query" id="i_query" type="text"></span>
+</div>
+</div>
+<div id="desc_top">
+<p></p>
+<p>칼럼 레이아웃을 선언할 때 가장 기본이 되는 Object 입니다.</p>
+<p>하나의 칼럼에 해당되며, 레이아웃 설정에선 Object 로 선언을 합니다.</p>
+<p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">아래는 설정 예제 입니다.</span>
+<div class="mxmlSyntax" id="mxmlSyntax"><pre>
+var columnLayout = [ {
+     dataField : "name",
+     headerText : "Name",
+     width : 140
+}, {
+     dataField : "country",
+     headerText : "Country",
+     width : 120
+}, {
+     dataField : "product",
+     headerText : "Product",
+     width: 120
+}, {
+     dataField : "quantity",
+     headerText : "Quantity"
+}, {
+     dataField : "price",
+     headerText : "Price",
+     dataType : "numeric"
+}, {
+     dataField : "date",
+     headerText : "Date"
+}];
+</pre>
+<p>위의 예제에서 columnLayout 을 배열로 만들어 개별 Object를 배열요소로 갖습니다.</p>
+<p>여기서 배열요소로 갖는 개별 Object 가 곧 Column 에 해당됩니다.</p>
+</div>
+</div>
+</div>
+<div class="summarySection">
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>Name</th><th>Description</th>
+</tr>
+<tr id="cellColMerge">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">cellColMerge</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean &nbsp; <span class="label">Version: </span>3.0<br>
+ <p>그리드 데이터 영역에서 칼럼 간의 가로 병합(colSpan)을 지시합니다.</p>
+ <p>cellColMerge 를 true 로 설정한 후, 반드시 cellColSpan 를 같이 정의해야 합니다.</p>
+ <p>따라서 <a href="#cellColSpan">cellColSpan</a> 도 함께 참고하여 보시길 바랍니다.</p>
+ <p>그리드의 속성인  enableCellMerge 를 선행적으로 true 설정한 경우 유효합니다.</p>
+ <pre>
+ var columnLayout = [ {
+      dataField : "f1",
+      cellColMerge : true, // 셀 가로 병합 실행
+      cellColSpan : 3 // 셀 가로 병합 대상은 3개로 설정
+ }, {
+      dataField : "f2"
+ }, {
+      dataField : "f3",
+ ...
+ </pre>
+ <p>참고 : cellColMerge 를 설정한 경우 칼럼 감추기 메소드(hideColumnByDataField)는 무시됩니다.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="cellColSpan">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">cellColSpan</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number &nbsp; <span class="label">Version: </span>3.0<br>
+ <p>그리드 데이터 영역에서 칼럼 간의 가로 병합(colSpan)을 지시합니다.</p>
+ <p>칼럼 간의 가로 병합은 cellColMerge 을 true 인 경우 같은 값일 때 가로 병합이 됩니다.</p>
+ <p>그리드가 그룹핑된 상태 또는 트리 그리드로 표현된 상태인 경우에는 가로 병합을 하지 않습니다. 즉, 계층 상태가 아닌 일반 그리드여야 가능합니다.</p>
+ <p>예를 들어 다음처럼 "f1" 칼럼에 cellColSpan 을 3으로 설정한 경우, "f1" 칼럼 기준 다음 3개의 셀에 출력되는 값이 같은 경우 가로로 3개를 병합니다.</p>
+ <p>그리드의 속성인  enableCellMerge 를 선행적으로 true 설정한 경우 유효합니다.</p>
+ <p>가로 병합할 때 가로 병합의 대상이 되는 셀들의 visible=false 설정은 무시됩니다.</p>
+ <p>즉, cellColSpan 을 3으로 설정한 경우 오른쪽의 2개의 칼럼의 visible=false 를 설정해도 해당 2개의 칼럼의 visible 은 무시됩니다.</p>
+ <p>또한 셀 세로 병합(cellMerge)와 병행하여 사용할 수 없습니다. 셀 세로 병합과 병행하여 사용하는 경우 셀 세로 병합만 적용됩니다.</p> 
+ <pre>
+ var columnLayout = [ {
+      dataField : "f1",
+      cellColMerge : true, // 셀 가로 병합 실행
+      cellColSpan : 3 // 셀 가로 병합 대상은 3개로 설정
+ }, {
+      dataField : "f2"
+ }, {
+      dataField : "f3",
+ ...
+ </pre>
+ <p>참고 : cellColMerge 를 설정한 경우 칼럼 감추기 메소드(hideColumnByDataField)는 무시됩니다.</p>
+  기본값(default) : <code>NaN</code>.</td>
+</tr>
+<tr id="cellMerge">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">cellMerge</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+<p>해당 칼럼의 셀 병합(cell merge) 여부를 결정합니다.</p>
+<p>셀 병합은 칼럼에서 상, 하가 같은 텍스트인 경우 하나의 셀로 합쳐 출력하는 기능입니다.</p>
+<p>그리드의 속성인  enableCellMerge 를 선행적으로 true 설정한 경우 유효합니다.</p>
+ 기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="children">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">children</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Array<br>
+<p>칼럼 헤더를 그룹 계층형으로 표현하고자 할 때 해당 칼럼의 자식에 해당되는 칼럼들을 설정합니다.</p>
+<p>계층 구조의 depth는 N-depth 로 자식의 자식을 설정할 수 있습니다.</p>
+<p>다음은 Group 이라는 계층 헤더를 작성 한 후, Country, Product 를 하위로 설정한 예제입니다.</p>
+<pre>
+var columnLayout = [ {
+     headerText : "Group",
+     children : [{
+             dataField : "country",
+             headerText : "Country",
+             width : 120
+     }, {
+             dataField : "product",
+             headerText : "Product",
+             width: 120
+     }] // end of children
+}];
+</pre>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="colSpan">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">colSpan</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number &nbsp; <span class="label">Version: </span>2.11.0<br>
+ <p>헤더 간의 가로 병합(colSpan)을 지시합니다.</p>
+ <p>병합되어 표시되는 칼럼에 총 병합 개수를 설정합시오.</p>
+ <p>예를 들어 헤더의 칼럼을 3개를 병합하여 한개로 출력하고자 한다면 다음과 같습니다.</p>
+ <pre>
+ var columnLayout = [ {
+      dataField : "name",
+      headerText : "병합된 헤더",
+      colSpan : 3
+ }, {
+      dataField : "country"
+ }, {
+      dataField : "product",
+ ...
+ </pre>
+ <p>참고 : 그룹형으로 헤더를 작성한 경우 헤더 병합은 최하단 헤더만 가능합니다.(즉, 마지막 계층(depth) 헤더만 가능)</p> 
+  기본값(default) : <code>NaN</code>.</td>
+</tr>
+<tr id="dataField">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">dataField</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>그리드의 Row 데이터에서 해당 칼럼이 표시할 데이터의 Key Field 를 설정합니다.</p>
+<p>특정 칼럼에 해당 데이터 필드 값을 출력하기 때문에 이 속성은 <strong>필수</strong>로 설정해야 합니다.</p>
+<p>해당 칼럼의 고유 key 에 해당되기 때문에 다른 칼럼의 dataField 와 동일한 값을 설정하지 마십시오.</p>
+<p>즉, 작성된 전체 칼럼들 중 중복된 dataField 의 값이 존재해서는 안됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="dataType">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">dataType</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>칼럼이 출력할 dataField 의 값의 데이터 유형을 지정합니다.</p>
+<p>유효 속성 값은 "numeric", "string", "date", "boolean" 입니다.</p>
+<p>그리드가 해당 데이터를 더욱 잘 이해하기 위해 지정할 필요가 있습니다. 예를 들어 출력 시킬 데이터가 숫자일 때 이 값을 numeric 으로 지정하면 자동으로 컴마가 붙어 출력됩니다.</p>
+<p>만약 숫자 형태더라도 dataType 에 "numeric" 을 지정하지 않은 경우에는 일반 스트링으로 인식하게 됩니다.</p>
+ 기본값(default) : <code>"string"</code>.</td>
+</tr>
+<tr id="dateInputFormat">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">dateInputFormat</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String &nbsp; <span class="label">Version: </span>3.0.11.10<br>
+ <p>dataType 을 "date" 로 설정한 경우 원시 데이터의 날짜 형식을 명시적으로 설정합니다.</p>
+ <p>데이터로 삽입되는 날짜 형식은 모호성을 가질 수 있습니다.</p>
+ <p>예로 "01/05/2018" 은 각각 2018년 1월 5일, 2018년 5월 1일로 해석될 수 있습니다.</p>
+ <p>만약 2018년 1월 5일에 해당된다면 "mm/dd/yyyy" 를, 2018년 5월 1일에 해당된다면 "dd/mm/yyyy" 를 설정하십시오.</p>
+ <p>"201801" 과 같이 "년월"로 날짜 형식을 갖는다면 명시적으로 "yyyymm" 를 설정하십시오.</p>
+ <p>또한 시간까지 포함된 다음 값이 "20180501 103059" 2018년 5월 1일 10시 30분 59초에 해당된다면 "yyyymmdd HHMMss" 를 설정하십시오.</p> 
+ <p>지정 가능한 문자는 다음과  같습니다.</p>
+   <ul style="list-style: square;list-style-position: inside;">
+    <li>yy : 연(Year) 2자리로 표현(예:15)</li>
+    <li>yyyy : 연(Year) 4자리로 표현(예:2015)</li>
+    <li>m : 월(Month) 1자리로 표현</li>
+    <li>mm : 월(Month) 2자리로 표현</li>
+    <li>d : 날짜(Day) 1자리수로 표현(예:1)</li>
+    <li>dd  : 날짜(Day) 2자리수로 표현(예:01)</li>
+          <li>HH : 시(Hours) 24시간제 2자리로 표현</li>
+          <li>MM : 분(Minutes) 2자리로 표현</li>
+          <li>ss : 초(Seconds) 2자리로 표현</li>
+     </ul>
+ <p> 참고 사항 : formatString 과 dateInputFormat 의 차이</p>
+ <ul style="list-style: square;list-style-position: inside;">
+ <li>formatString : 데이터의 날짜 스트링을 어떻게 그리드의 셀에 출력할 것인가를 지정</li>
+ <li>dateInputFormat : 데이터의 날짜 스트링을 그리드가 어떻게 해석할 것인가를 지정</li>
+ </ul>
+ <p><a href="../../samples/formatter-date-input.html?ftdate&theme=default" target="_blank">관련 데모 보기</a></p>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="disabelMoving">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">disabelMoving</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+ <p>그리드 속성 enableMovingColumn 를 true 로 설정한 경우 칼럼 헤더를 드래그 앤 드랍으로 자리를 옮길 수 있지만, disableMoving 을 true 로 설정하면 해당 칼럼은 사용자가 드래깅으로 자리를 옮길 수 없습니다.</p>
+ <p>즉, disabelMoving = true 설정하면 직접적인 이동 대상에서 제외됩니다.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="disableGrouping">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">disableGrouping</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+ <p>그리드 속성 useGroupingPanel 을 활성화 한 경우 칼럼 헤더를 드래그 앤 드랍으로 그룹핑을 실행할 때 disableGrouping 을 true 로 설정하면 해당 칼럼은 그룹핑을 할 수 없습니다.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="editable">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">editable</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+<p>해당 칼럼의 수정, 편집 가능 여부를 결정합니다.</p>
+<p>칼럼의 특정 셀을 더블 클릭(또는 클릭, F2 키 등) 시 편집, 수정 모드로 진입하는데 이 속성이 false 로 지정되면 해당 칼럼은 편집 불가능한 칼럼이 됩니다.</p>
+<p>그리드의 속성인 editable 을 선행적으로 true 설정한 경우 유효합니다.</p>
+ 기본값(default) : <code>true</code>.</td>
+</tr>
+<tr id="editRenderer">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">editRenderer</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object<br>
+<p>편집 수정 모드로 진입했을 때 <strong>셀의 수정 방식</strong>을 지정합니다. 즉, 셀의 값을 어떤 형태로 사용자에게 수정시킬지에 대한 방식을 결정합니다.</p>
+<p>기본적으로 일반 텍스트입력(InputEditRenderer) 형태이며 달력이나 드랍다운리스트 등의 여러 형태가 될 수 있습니다.</p>
+<p>이 속성을 지정하지 않으면 일반 텍스트입력(InputEditRenderer) 형태가 출력됩니다.</p>
+<p>editRenderer 는 Object 형태로 지정되며 사용 형태는 다음과 같습니다.</p>
+<pre>
+editRenderer : {
+    type : "DropDownListRenderer",
+    list : ["Red", "White", "Blue"]
+}</pre>
+ <p>Also See : <a href="./BTCalendarRenderer.html" target="_blank">BTCalendarRenderer</a>
+ | <a href="./CalendarRenderer.html" target="_blank">CalendarRenderer</a>
+ | <a href="./ComboBoxRenderer.html" target="_blank">ComboBoxRenderer</a>
+ | <a href="./DropDownListRenderer.html" target="_blank">DropDownListRenderer</a>
+ | <a href="./InputEditRenderer.html" target="_blank">InputEditRenderer</a>
+ | <a href="./JQCalendarRenderer.html" target="_blank">JQCalendarRenderer</a>
+ | <a href="./NumberStepRenderer.html" target="_blank">NumberStepRenderer</a>   
+ | <a href="./RemoteListRenderer.html" target="_blank">RemoteListRenderer</a>        
+ </p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="expFunction">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">expFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function<br>
+<p>칼럼은 dataField 를 키로 갖는 값(value) 을 출력 시킵니다. 그러나 원래 없던 데이터를 가공하여 출력하고자 할 경우가 있습니다.</p>
+<p>예를 들어 칼럼1 과 칼럼2 의 합을 칼럼3에 출력하고자 할 때 칼럼3에 출력 시킬 데이터를 서버단에서 미리 계산해서 가져 올 수 있지만, 그리드에게 계산하도록 지시하여 출력 시킬 수 도 있습니다.</p>
+<p>이렇게 그리드에 의해 계산하도록 지정하면, 칼럼 1이나 칼럼2의 값이 변경되었을 때 칼럼3의 데이터도 같이 변경됩니다.</p>
+<p>이 처럼 칼럼과 칼럼들이 의존적 관계를 갖게 될 때 해당 값을 계산하도록 할 함수를 지정합니다.</p>
+<p>expFunction 을 지정하는 칼럼의 dataField 속성은 중복되지 않는 임의의 스트링을 지정 하십시오. expFunction 에서 계산된 값이 해당 dataField 의 값으로 보관됩니다.</p>
+<p>expFunction 은 수식 함수이기 때문에 반환(Return)형은 반드시 Number 여야 합니다. </p>
+<p>expFunction 을 설정하면 해당 칼럼을 직접 수정 할 수 없습니다. 반드시 해당 칼럼은 expFunction 을 통해서만 값이 결정됩니다.</p>
+<p>이 함수의 파라메터 및 형식은 다음과 같습니다.</p>
+<ul> 
+<li>rowIndex : 행 인덱스</li>
+<li>columnIndex : 칼럼 인덱스</li>
+<li>item : 해당 행에 출력되고 있는 행 아이템 객체 (Object)</li>
+<li>dataField : 행 아이템에서 현재 칼럼이 출력되고 있는 데이터의 KeyField</li>
+</ul>
+<pre>
+expFunction : function(rowIndex, columnIndex, item, dataField) {
+        // 1~2 분기 합을 계산하여 반환
+        // expFunction 의 리턴형은 항상 Number 여야 합니다.(즉, 수식만 가능)
+        return Number( item.col1 + item.col2 ); 
+ }
+</pre>
+<p>함수의 반환값이 곧 칼럼의 셀에 출력되며, 수식 함수이기 때문에 반환형을 Number 로 일치 시키십시오.</p>
+<p>Also See : <a href="#labelFunction">labelFunction</a> | <a href="../../samples/dependency_columns.html?dep_col&theme=default" target="_blank">관련 데모 보기</a></p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="filter">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">filter</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object<br>
+<p>칼럼에 필터링이 가능하도록 설정합니다.</p>
+<p>filter 은 Object 형태로 지정되며 사용 형태는 다음과 같습니다.</p>
+<pre>
+filter : {
+      eanble : true,
+      showIcon : true,
+      type : "numeric",
+      filterFunction : myFilterFunction
+ }
+</pre>
+<ul>
+<li> displayFormatValues : 포매팅한 텍스트로 필터 메뉴를 작성할지 여부를 나타냅니다. 포매팅 텍스트와 값이 1:1 매핑된 경우만 정상 작동합니다.(기본값 : false)</li>
+<li> enable : 해당 칼럼의 필터링 사용 여부를 지정합니다.(기본값 : true)</li>
+<li> enableCustomMenu : 해당 칼럼의 필터링 메뉴를 기본으로 제공되는 메뉴가 아닌 사용자가 직접 작성한 메뉴를 사용할지 여부를 나타냅니다.(기본값:false)</li>
+<li> showIcon : 헤더의 오른쪽에서 필터링 아이콘을 출력할 지 여부를 나타탭니다. 이 아이콘을 출력한다면 아이콘 클릭시 필터 메뉴가 나옵니다.(기본값:false)</li>
+<li> type : 필터의 type을 지정합니다. 유효값은 "default", "numeric" 입니다.(기본값:default)</li>
+<li> iconClick : enableCustomMenu 를 true 로 설정한 경우 클릭 시 발생하는 이벤트 핸들러 함수입니다.(기본값:null) </li> 
+<li> iconWidth : 헤더에 출력되는 필터링 아이콘의 가로 사이즈를 지정합니다.(기본값:14)</li>
+<li> filterFunction : 사용자가 필터링 비교 함수를 작성하여 원하는 데이터를 필터링 할 수 있도록 돕는 함수입니다.(기본값:null)
+    <pre>
+    function signature : 
+    // dataField : 해당 칼럼의 dataField
+    // value : 해당 값
+    // item : 행 아이템 Object
+    function (dataField, value, item) {
+         return value > 10 ? true : false; // 10 보다 큰 값만 출력 
+    }</pre>
+ </li>
+ <li> useExMenu (v3.0.3) : 확장 필터 메뉴 사용 여부를 지정합니다. 확장 필터 메뉴는 "텍스트 필터" 와 "숫자 필터"가 있습니다. dataType 에 맞게 텍스트 와 숫자 필터가 결정됩니다.(기본값 : false)</li>
+ <li> inline (v3.0.11) : 그리드 속성 showInlineFilter = true 설정했을 때 인라인 필터 출력 여부를 지정합니다.(기본값 : true)</li>
+ <li> inlineClear (v3.0.11) : 인라인 필터를 위해 입력한 스트링을 바로 지울 수 있는 버턴을 오른쪽에 생성할지 여부를 지정합니다.(기본값 : true)</li>
+ <li> useInlineExtra (v3.0.11.9) : 인라인 필터에서 AND(&), OR(|), NOT(!) 연산자를 사용하여 확장 필터를 제공할지 여부를 지정합니다.(기본값 : false)</li>
+ </ul>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="formatString">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">formatString</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+ <p>dataType 을 "numeric" 또는 "date" 로 지정한 경우 출력되는 포맷을 지정합니다.</p>
+ <p>1. 지정 가능한 숫자 포맷 스트링(dataType="numeric" 인 경우)는 다음과 같습니다.</p>
+   <p>"0" 과 "#"의 차이는 "0"은 반드시 자리수를 차지하도록 채웁니다. "#"은 있는 경우 출력 시킴</p>
+   <ul style="list-style: square;list-style-position: inside;">
+    <li>###0 : 컴마 구분자 없이 정수 표현</li>
+    <li>#### : 컴마 구분자 없이 정수 표현, 0인 경우 공백 처리</li>
+    <li>#,##0 : 천단위 마다 컴마 구분자 정수 표현</li>
+    <li>#,### : 천단위 마다 컴마 구분자 정수 표현, 0인 경우 공백 처리</li>
+    <li>#,##0.0 : 천단위 마다 컴마 구분자 소수 1자리 의무 표현(소수 2자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.# : 천단위 마다 컴마 구분자 소수 있다면 1자리 표현, 0인 경우 공백 처리(소수 2자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.00 : 천단위 마다 컴마 구분자 소수 2자리 의무 표현(소수 3자리에서 기본적으로 반올림 처리)</li>
+    <li>#,##0.0# : 천단위 마다 컴마 구분자 소수 1자리 의무, 2자리 있다면 표현(소수 3자리에서 기본적으로 반올림 처리)</li>
+    <li># ##0,00 또는 #.##0,00 와 같이 해외에서 사용하는 포맷 형식 지원함(즉, 천단위를 공백 또는 점으로 소수점을 컴마로 변경)</li>
+    <li>확장해서 "000000" 로 지정하면 의무적으로 정수 6자리를 출력함. 값이 1인 경우 포매팅 되어 "000001" 로 출력 시킴</li>
+   </ul>
+ <p>2. 지정 가능한 날짜 포맷스트링(dataType="date" 인 경우) 는 다음과 같습니다.</p>
+   <ul style="list-style: square;list-style-position: inside;">
+    <li>yy : 연(Year) 2자리로 표현(예:15)</li>
+    <li>yyyy : 연(Year) 4자리로 표현(예:2015)</li>
+    <li>m : 월(Month) 1자리로 표현</li>
+    <li>mm : 월(Month) 2자리로 표현</li>
+      <li>mmm : 월(Month) 영문 이름 3자리로 표현(예:Jan)</li>
+    <li>mmmm : 월(Month) 영문 전체 이름으로 표현(예:January)</li>
+    <li>d : 날짜(Day) 1자리수로 표현(예:1)</li>
+    <li>dd  : 날짜(Day) 2자리수로 표현(예:01)</li>
+    <li>ddd : 한글 요일로 표현(예:월, 화, 수)</li>
+    <li>dddd : 영문 요일 3자리 이름으로 표현(예:Mon, Tue)</li>
+    <li>h : 시(Hours) 12시간제 1자리로 표현</li>
+    <li>hh : 시(Hours) 12시간제 2자리로 표현</li>
+    <li>H : 시(Hours) 24시간제 1자리로 표현</li>
+    <li>HH : 시(Hours) 24시간제 2자리로 표현</li>
+    <li>M : 분(Minutes) 1자리로 표현</li>
+    <li>MM : 분(Minutes) 2자리로 표현</li>
+    <li>s : 초(Seconds) 1자리로 표현</li>
+    <li>ss : 초(Seconds) 2자리로 표현</li>
+    <li>t : 오전, 오후를 한글로 표현(예: 오전, 오후)</li>
+    <li>tt : 오전, 오후를 am 또는 pm으로 표현</li>
+    <li>T :  오전, 오후를 A 또는 P로 표현</li>
+    <li>TT  : 오전, 오후를 AM 또는 PM으로 표현</li>
+   </ul>
+ <p>참고 사항 : 기본 지원하는 포매팅 외 개발자가 원하는 형태로 포맷팅을 하고자 한다면 사용자 정의 포매팅 함수인 <a href="#labelFunction">labelFunction</a> 을 참고하여 주십시오.</p>
+ <p>참고 사항 : formatString 과 dateInputFormat 의 차이</p>
+ <ul style="list-style: square;list-style-position: inside;">
+ <li>formatString : 데이터의 날짜 스트링을 어떻게 그리드의 셀에 출력할 것인가를 지정</li>
+ <li>dateInputFormat : 데이터의 날짜 스트링을 그리드가 어떻게 해석할 것인가를 지정</li>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="headerRenderer">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">headerRenderer</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object &nbsp; <span class="label">Version: </span>3.0.4<br>
+<p>칼럼 헤더의 표현 방식을 지정합니다.</p>
+<p>칼럼 헤더는 실질적인 데이터 출력 헤더에만 가능합니다. 즉, 그룹형으로 헤더 작성한 경우 그룹 헤더(브랜치 헤더)에는 출력 시킬 수 없습니다.</p>
+<p>예로 헤더에 텍스트를 출력할지, 체크박스를 출력할지를 지정합니다.</p>
+<p>headerRenderer 는 Object 형태로 지정되며 사용 형태는 다음과 같습니다.</p>
+<pre>
+headerRenderer : {
+     type : "CheckBoxHeaderRenderer",
+     position : "right" // headerText 기준 오른쪽에 위치
+}</pre>
+ <p>Also See : <a href="./ButtonHeaderRenderer.html" target="_blank">ButtonHeaderRenderer</a>
+ | <a href="./CheckBoxHeaderRenderer.html" target="_blank">CheckBoxHeaderRenderer</a>
+ </p>
+  <p><a href="../../samples/header_renderer_checkbox.html?hrenChk&theme=default&s=1375" target="_blank">관련 데모 보기</a></p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="headerStyle">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">headerStyle</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>해당 칼럼의 헤더 스타일을 지정합니다.</p>
+<p>칼럼 헤더에 스타일을 CSS Class 선택자로 설정하십시오.</p>
+<p>예를 들어 CSS 에서 <code>.my-custom { color:#ff0000; }</code> 로 클래스 CSS 를 정의했을 때 이 클래스를 사용하고자 하는 경우 style 에 CSS 명을 설정하십시오.</p>
+<p> 설정 예는 <code>headerStyle : "my-custom"</code> 과 같습니다. 점(.) 은 생략하고 지정하십시오.</p>
+<p>다중의 CSS 클래스는 지원하지 않습니다. 예를 들어 "right-style bold-style font12-style" 과 같은 구조는 지원하지 않습니다.</p>
+<p>엑셀 내보내기 시에는 해당 스타일의 글자색, 배경색, 볼드체, 이탤릭체만 적용됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="headerText">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">headerText</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>그리드의 헤더에 표시되는 칼럼 헤더 제목을 설정합니다.</p>
+<p>그리드의 Row 데이터에서 해당 칼럼에 출력하는 데이터 KeyField 가 name 인 경우 헤더에 '이름' 이라고 출력하고자 한다면 이 값을 '이름'으로 설정하십시오.</p>
+<p>만약 설정하지 않는다면 dataField에서 설정한 값(keyField)이 출력됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="headerTooltip">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">headerTooltip</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object<br>
+<p>칼럼 헤더에 마우스 오버 시 생기는 툴팁을 설정합니다.</p>
+<p>headerTooltip 은 Object 형태로 지정되며 사용 형태는 다음과 같습니다.</p>
+<pre>
+headerTooltip : {
+      show : true,
+      tooltipHtml : "Just an incredibly simple AUIGrid 툴팁"
+ }
+</pre>
+<p>headerTooltip 의 tooltipHtml 의 값은 일반 스트링이 될 수 있고, HTML 스트링이 될 수 있습니다.</p>
+<p>HTML 을 작성하면 해당 HTML 이 툴팁으로 표시됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="labelFunction">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">labelFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function &nbsp; <span class="label">Version: </span>3.0.2.12<br>
+<p>칼럼에 출력되는 셀 텍스트를 사용자 정의 할 수 있는 함수입니다.</p>
+<p>기본적으로 데이터의 값이 셀에 출력되는데 이 값을 자바스크립트에서 재가공하여 출력하고자 하는 경우 이 속성을 설정하십시오.</p>
+<p>labelFunction 으로 가공한 값은 실제 데이터에 영향을 미치지 않고 단순히 보여지는 방식만 바꿔서 보여줍니다.</p>
+<p>labelFunction 은 많은 곳에서 응용이 가능합니다.</p>
+<p>예로 고객이 원하는 셀 출력은 일반적인 값 형태인 별칭(alias)인데 데이터는 코드값인 경우, 사용자가 보기 편한 코드값을 별칭으로 변환 시켜서 보여줄 수 있습니다.</p>
+<p>즉, 뷰(view)적인 표현만 다르게 할 뿐입니다. 이에 반해 실제 데이터에 직접적으로 적용시키는 속성은 expFunction 이 존재합니다.</p>
+<p>labelFunction 은 함수를 지정해야 하며 함수 형태는 다음과 같습니다. </p>
+<ul>
+<li>rowIndex : 행 인덱스</li>
+<li>columnIndex : 칼럼 인덱스</li>
+<li>value : 원래 데이터의 해당 셀 값(value)</li>
+<li>headerText : 현재 칼럼의 헤더 텍스트</li>
+<li>item : 해당 행에 출력되고 있는 행 아이템 객체 (Object)</li>
+<li>dataField : 행 아이템에서 현재 칼럼이 출력되고 있는 데이터의 KeyField</li>
+<li>cItem : 설정한 칼럼 레이아웃에서 해당 열에 해당되는 객체 정보 (Object)</li>
+</ul>
+<pre>
+labelFunction : function(rowIndex, columnIndex, value, headerText, item, dataField, cItem) {
+   var myString = "";
+   // 로직 처리
+   // 여기서 value 를 원하는 형태로 재가공 또는 포매팅하여 반환하십시오.
+   // 함수의 반환값이 곧 셀에 출력됩니다.
+   return myString;
+}</pre>
+<p>참고 : labelFunction 은 랜더링될 때마다 호출됩니다. 여기서 그리드의 메소드 사용, 반복문 사용, DOM 검색 등은 자제 하십시오. 퍼포먼스에 악영향을 미칩니다.</p>
+<p>Also See : <a href="#expFunction">expFunction</a> | <a href="../../samples/formatter-custom.html?ftcst&theme=default" target="_blank">관련 데모 보기</a></p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="mergePolicy">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">mergePolicy</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+ <p>셀 세로 병합을 설정한 경우(cellMerge : true) 이전 칼럼의 셀 병합 여부를 보고 판단할지를 지정합니다.</p>
+ <p>만약 두 개의 칼럼(대분류, 소분류)을 위, 아래로 병합한다고 가정할 때 대분류는 단순히 값이 같다면 병합해도 문제가 없습니다.</p>
+ <p>그러나 소분류의 값은 값이 같다고 해도 대분류의 값까지 고려해야 할 필요가 있습니다. 이런 경우 소분류에 해당되는 칼럼에 mergePolicy 를 설정하고 "restrict" 값을 설정하십시오.</p>
+ <p>"restrict" 를 설정하면 막연히 위, 아래 값이 같다고 병합을 실행하지 않고, 이전 칼럼(즉, 대분류) 의 값을 고려하여 셀 병합을 실행합니다.</p> 
+ <p>유효값은 "always", "restrict" 입니다.</p>
+  기본값(default) : <code>"always"</code>.</td>
+</tr>
+<tr id="mergeRef">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">mergeRef</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+ <p>셀 세로 병합을 실행할 때 mergePolicy 를 "restrict" 로 설정한 경우, 먼저 고려할 칼럼의 dataField 를 지정합니다.</p>
+ <p>mergeRef 를 설정하지 않으면 바로 이전 칼럼의 dataField 를 기본값으로 갖습니다.</p>
+  기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="minWidth">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">minWidth</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number<br>
+<p>해당 칼럼이 최소로 작아질 수 있는 넓이 값(픽셀 단위)을 설정합니다.</p>
+<p>minWidth 는 명시적으로 픽셀 단위인 Number 형 만을 설정해야 합니다.</p>
+<p>width 의 설정 값이 퍼센티지(%)인 경우 해당 퍼센티지의 값이 minWidth 보다 작아지면 minWidth 값의 넓이로 출력 시킵니다.</p>
+<p>또한 사용자가 칼럼과 칼럼 사이 드래깅을 통하여 넓이 조절을 할 때 minWidth 보다 작게 조절 할 수 없습니다.</p>
+ 기본값(default) : <code>NaN</code>.</td>
+</tr>
+<tr id="postfix">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">postfix</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>셀에 출력되는 텍스트의 접미사를 지정합니다.</p>
+<p>예를 들어 1000 이라는 글자에 만원이라는 글자를 추가하고자 한다면 이속성에 '만원'을 설정하십시오.</p>
+ 기본값(default) : <code>""</code>.</td>
+</tr>
+<tr id="prefix">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">prefix</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>셀에 출력되는 텍스트의 접두사를 지정합니다.</p>
+<p>예를 들어 1000 이라는 글자에 달러표시($) 를 추가하고자 한다면 이 속성에 '$'를 설정하십시오.</p>
+ 기본값(default) : <code>""</code>.</td>
+</tr>
+<tr id="renderer">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">renderer</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object<br>
+<p>칼럼이 출력시킬 <strong>셀의 표현 방식</strong>을 지정합니다. 즉, 셀의 값을 어떤 형태로 출력시킬지를 결정합니다.</p>
+<p>칼럼에는 여러 형태로 출력이 될 수 있습니다. 예로 이미지, 아이콘, 버턴, 바 게이지 등이 될 수 있습니다.</p>
+<p>renderer 는 Object 형태로 지정되며 사용 형태는 다음과 같습니다.</p>
+<pre>
+renderer : {
+      type : "IconRenderer",
+      iconWidth : 20,
+      iconHeight: 16,
+      iconTableRef : {
+           default : "./assets/korea.png"
+      }
+ }</pre>
+ <p>Also See : <a href="./BarRenderer.html" target="_blank">BarRenderer</a> | <a href="./ButtonRenderer.html" target="_blank">ButtonRenderer</a>
+ | <a href="./CheckBoxEditRenderer.html" target="_blank">CheckBoxEditRenderer</a> 
+ | <a href="./IconRenderer.html" target="_blank">IconRenderer</a>
+ | <a href="./ImageRenderer.html" target="_blank">ImageRenderer</a>
+ | <a href="./LinkRenderer.html" target="_blank">LinkRenderer</a>
+ | <a href="./NumberStepRenderer.html" target="_blank">NumberStepRenderer</a>
+ | <a href="./SparkColumnRenderer.html" target="_blank">SparkColumnRenderer</a>
+ | <a href="./SparkLineRenderer.html" target="_blank">SparkLineRenderer</a>
+ | <a href="./SparkWinLossRenderer.html" target="_blank">SparkWinLossRenderer</a>
+ | <a href="./TemplateRenderer.html" target="_blank">TemplateRenderer</a>
+ </p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="rounding">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">rounding</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+ <p>칼럼의 dataType 을 "numeric" 으로 지정한 경우, "formatString" 에 의해 처리되는 소수점 반올림, 올림, 내림을 결정합니다.</p>
+ <p>예를 들어 formatString 을 "#,##0" 으로 지정한 경우, 실제 값이 12345.6 일 때 기본값은 반올림되어 "12,346" 으로 포맷팅되어 출력됩니다.</p>
+ <p>소수점 처리 방식을 반올림, 내림, 올림을 결정짓는 속성입니다.</p>
+ <p>유효값은 다음과 같습니다.</p>
+ <ul>
+ <li>"ceil" : 소수점 처리를 올림합니다.</li>
+ <li>"floor" : 소수점 처리를 내림합니다.</li>
+ <li>"round" : 소수점 처리를 반올림합니다.</li>
+ </ul>
+  기본값(default) : <code>"round"</code>.</td>
+</tr>
+<tr id="searchByFormatValue">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">searchByFormatValue</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean &nbsp; <span class="label">Version: </span>3.0.9<br>
+ <p>그리드 속성 searchByFormatValue을 true로 설정한 경우 해당 칼럼이 포매팅된 값을 대상으로 검색을 실행할지 지정합니다.</p>
+  기본값(default) : <code>true</code>.</td>
+</tr>
+<tr id="sortable">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">sortable</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+<p>해당 칼럼의 정렬(sorting) 여부를 결정합니다.</p>
+<p>칼럼 헤더를 클릭 시 칼럼의 데이터가 정렬되어 다시 출력되는데 이 때 정렬 할 수 있는 칼럼과 정렬 할 수 없는 칼럼을 지정할 수 있습니다.</p>
+<p>이 속성을 false 로 설정하면 해당 칼럼 필드로는 정렬할 수 없습니다.</p>
+ 기본값(default) : <code>true</code>.</td>
+</tr>
+<tr id="style">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">style</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>해당 칼럼 전체 스타일을 지정합니다.</p>
+<p>칼럼 전체의 스타일을 CSS Class 선택자로 설정하십시오.</p>
+<p>예를 들어 CSS 에서 <code>.my-custom { color:#ff0000; }</code> 로 클래스 CSS 를 정의했을 때 이 클래스를 사용하고자 하는 경우 style 에 CSS 명을 설정하십시오.</p>
+<p> 설정 예는 style : "my-custom" 과 같습니다. 점(.) 은 생략하고 지정하십시오.</p>
+<p>다중의 CSS 클래스는 지원하지 않습니다. 예를 들어 "right-style bold-style font12-style" 과 같은 구조는 지원하지 않습니다.</p>
+<p>엑셀 내보내기 시에는 해당 스타일의 글자색, 배경색, 볼드체, 이탤릭체만 적용됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="styleFunction">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">styleFunction</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Function<br>
+<p>칼럼에 출력되는 셀의 개별 스타일을 동적으로 지정하는 함수입니다.</p>
+<p>기본적으로 셀은 일괄적으로 칼럼 또는 로우에 의해 스타일이 상속 받아져 지정됩니다. </p>
+<p>그러나 개별적으로 셀 하나 하나에 스타일을 지정하고자 할 때 이 함수를 사용하십시오.</p>
+<p>styleFunction 은 함수를 지정해야 하며 함수 형태는 다음과 같습니다. </p>
+<ul>
+<li>rowIndex : 행 인덱스</li>
+<li>columnIndex : 칼럼 인덱스</li>
+<li>value : 원래 데이터의 해당 셀 값(value)</li>
+<li>headerText : 현재 칼럼의 헤더 텍스트</li>
+<li>item : 해당 행에 출력되고 있는 행 아이템 객체 (Object)</li>
+<li>dataField : 행 아이템에서 현재 칼럼이 출력되고 있는 데이터의 KeyField</li>
+</ul>
+<pre> 
+styleFunction : function(rowIndex, columnIndex, value, headerText, item, dataField) {
+   var myStyle = "my-custom-style";
+   // 로직 처리
+   return myStyle;
+} 
+</pre>
+<p>함수의 반환값은 CSS 에서 이미 선언되어 있는 CSS 클래스여야 합니다.</p>
+<p>다중의 CSS 클래스는 지원하지 않습니다. 예를 들어 "right-style bold-style font12-style" 과 같은 구조는 지원하지 않습니다.</p>
+<p>엑셀 내보내기 시에는 해당 스타일의 글자색, 배경색, 볼드체, 이탤릭체만 적용됩니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="tooltip">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">tooltip</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Object<br>
+<p>그리드 셀에 마우스 오버 시 생기는 툴팁을 설정합니다. (그리드 속성 showTooltip = true 설정 선행 필수)</p>
+<p>tooltip 은 Object 형태로 지정되며 다음 필드를 지정할 수 있습니다.</p>
+<ul>
+<li>show (Boolean) : 해당 칼럼 툴팁 활성화 여부(기본값 : true)</li>
+<li>useNativeTip (Boolean) : AUIGrid 이 툴팁이 아닌 HTML 의 내장 툴팁인 title 속성으로 출력할지 여부</li>
+<li>tooltipField (String) : 툴팁으로 출력할 행 아이템 객체(Object)의 필드명(기본값 : null)</li>
+<li>tooltipFunction (Function) : 툴팁으로 출력될 내용을 사용자 정의 할 수 있는 함수(기본값 : null)</li>
+<p>사용 형태는 다음과 같습니다.</p>
+<pre>
+tooltip : {
+      show : true,
+      tooltipField : "flag"
+      tooltipFunction : function(rowIndex, columnIndex, value, headerText, item, dataField) {
+         return value;
+      } 
+ }
+</pre>
+<p>내장 툴팁(useNativeTip=true) 설정 시 단순히 해당 셀의 값만 출력할 뿐 tooltipField, tooltipFunction 을 사용하여 값을 변경할 수 없습니다.</p>
+<p>tooltipFunction 의 반환값은 일반 스트링이 될 수 있고, HTML 스트링이 될 수 있습니다.</p>
+<p>tooltipFunction 은 tooltipField 보다 우선 순위가 높아 두 개를 같이 설정하면 tooltipField 는 무시됩니다.</p> 
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+<tr id="visible">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">visible</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+ <p>최초 칼럼 생성 시 보이기 설정을 지시합니다.</p>
+ <p>만약 visible 을 false 로 설정하면 해당 칼럼을 생성은 하지만 보이지 않게 출력 시킵니다.</p>
+ <p>보이지 않게 처리된 칼럼은 추후 showColumnByDataField 메소드로 보이게 출력 시킬 수 있습니다.</p>
+  기본값(default) : <code>true</code>.</td>
+</tr>
+<tr id="width">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">width</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number or String<br>
+<p>해당 칼럼의 가로 넓이 고정 값을 설정합니다.</p>
+<p>만약 이 값을 설정하지 않는다면 기본 값 80 이 할당됩니다. 그러나 width 속성을 설정하지 않은 칼럼이 다수 인 경우 현재 그리드의 총 넓이를 그 수만큼 나눠서 할당됩니다.</p>
+<p>예를 들어 5개의 칼럼을 만들었을 때 1개의 칼럼만 크기를 설정한다면 4개의 칼럼은 남은 그리드 width 를 4등분하여 설정됩니다.</p>
+<p>반대로 4개의 칼럼에 고정값을 설정하고 1개의 칼럼에 이 값을 설정하지 않았다면 1개의 칼럼이 남은 그리드 width 의 전체가 설정됩니다.</p>
+<p>이 속성 값을 설정하지 않는다면 그리드 칼럼은 기본 80보다 작게는 출력되지 않습니다. 따라서 칼럼 수가 많은 경우 횡스크롤이 생기게 됩니다.</p>
+<p>만약 이 값을 퍼센티지로 설정하고자 한다면 "10%" 또는 "20%" 와 같이 설정하십시오.</p>
+<p>"10%" 로 설정한다면 그리드 총 넓이의 10%에 해당되는 값으로 칼럼이 생성됩니다.</p>
+ 기본값(default) : <code>80</code>.</td>
+</tr>
+<tr id="widthFit">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">widthFit</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number &nbsp; <span class="label">Version: </span>3.0.9<br>
+ <p>헤더와 헤더 사이 경계를 더블 클릭 한 경우 명시적으로 적용시킬 넓이(width)를 설정합니다.</p>
+ <p>렌더러(renderer)의 유형에 따라 더블 클릭 시 해당 칼럼의 적절한 넓이(width)대로 자동 조절되지 않습니다.</p>
+ <p>이런 경우 widthFit 속성을 설정하면 해당 값으로 더블 클릭 시 적용됩니다.</p> 
+  기본값(default) : <code>NaN</code>.</td>
+</tr>
+<tr id="wrapText">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">wrapText</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean &nbsp; <span class="label">Version: </span>3.0.4<br>
+ <p>그리드 속성 wordWrap 과 무관하게 설정한 칼럼의 자동 개행(word-wrap)을 할지 여부를 지정합니다.</p>
+ <p>그리드 속성 wordWrap 은 칼럼과 무관하게 그리드 전체에 적용되어 가변적인 행의 높이를 갖지만</p>
+ <p>칼럼 속성 wrapText 는 설정한 칼럼에서 고정된 행의 높이 안에서 출력됩니다.</p>
+ <p>즉, wrapText 설정 시 공간이 부족하여 출력되지 않은 텍스트는 가려져 출력됩니다.</p>
+ <p>참고 : 그리드 속성 wordWrap 을 true 로 설정하면 칼럼의 wrapText 는 무시됩니다.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="xlsxNumeric">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">xlsxNumeric</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean &nbsp; <span class="label">Version: </span>3.0.6<br>
+ <p>dataType 을 "numeric" 으로 설정하고 formatString 을 지정한 경우 엑셀 내보내기 할 때 실질적인 숫자 그대로 내보내기 할 지 여부를 지정합니다.</p>
+ <p>실질적인 숫자의 의미는 예로 95.87 이라는 값이 있는 경우 formatString 을 "#,##0" 으로 설정했을 때 96 으로 출력이 됩니다.</p>
+ <p>이 때 엑셀로 내보내기 할 때 포매팅된 값인 96을 내보내기하지 않고 95.87 로 내보내기할지 여부를 의미합니다.</p>
+ <p>xlsxNumeric 을 true 로 설정하면 엑셀의 셀에 보여지는 값은 96으로 동일하게 보이지만 더블클릭 시 보이는 값(또는 엑셀의 수식창의 값)은 95.87 로 나타납니다.</p>
+ <p>xlsxNumeric 은 formatString 이외 prefix, postfix, labelFunction 등으로 포매팅한 경우 무시됩니다.(formatString 설정 시에만 사용 가능함)</p>
+ <p>또한 rounding 속성으로 소수점을 반올림처리 할 때만 유효합니다.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+<tr id="xlsxTextConversion">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">xlsxTextConversion</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean &nbsp; <span class="label">Version: </span>2.11.0<br>
+ <p>칼럼의 데이터 유형(dataType)에 관계 없이 엑셀로 내보내기(Export) 할 때 엑셀 포맷에 명시적으로 텍스트 형식을 지정합니다.</p>
+ <p>예를 들어, 상품 번호가 "111200340052" 라면, 엑셀로 내보내기 할 때 엑셀 상에서 숫자 형식으로 인식 됩니다.</p>
+ <p>이런 경우, 실질적으로 텍스트로 인식시켜야 할 필요가 있습니다.</p>
+ <p>엑셀 포맷에서 명시적으로 텍스트로 인식시키고자 한다면 xlsxTextConversion 을 true 로 설정하십시오.</p>
+  기본값(default) : <code>false</code>.</td>
+</tr>
+</table>
+</div>
+<div class="MainContent">
+<p></p>
+<center class="copyright">Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved</center>
+</div>
+</body>
+</html>
+<!--Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved-->

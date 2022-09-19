@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../static/style.css" type="text/css" media="screen">
+<meta charset="utf-8">
+<meta content="text/javascript" http-equiv="Content-Script-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="no-cache" http-equiv="Pragma">
+<meta content="-1" http-equiv="Expires">
+<meta content="width=1200" name="viewport">
+<meta content="AUIGrid API Documentation" name="apple-mobile-web-app-title">
+<meta content="AUIGrid API Documentation" property="og:title">
+<meta content="http://www.auisoft.net/documentation/auigrid" property="og:url">
+<meta content="AUIGrid API Documentation" property="og:description">
+<meta content="AUIGrid API Documentation" name="keywords">
+<script src="../static/doc.js" type="text/javascript"></script>
+<title>	AUIGrid Documentation</title>
+</head>
+<body>
+<div class="header">
+<div id="logo-bar">
+<a href="../index.html"><img src="../images/auisoft.png" alt="AUISoft" title="AUISoft"></a>
+</div>
+<span id="title">AUIGrid 3.0.11 Documentation</span>
+</div>
+<div class="classDescContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable"></table>
+<div style="margin-top:12px;margin-bottom:18px;">
+<span class="className">BarRenderer</span>
+<div id="searchbox" class="searchbox">
+<span class="keyword"><input placeholder="검색어 입력" maxlength="255" class="box_window" name="i_query" id="i_query" type="text"></span>
+</div>
+</div>
+<div id="desc_top">
+<p></p>
+<p>바 렌더러는 특정 칼럼의 셀에 바 게이지가 출력되는 칼럼 렌더러입니다.</p>
+<p>바 렌더러는 칼럼 레이아웃을 정의할 때 개별 칼럼의 renderer 속성 값인 Object 형태로 선언되어야 합니다.</p>
+<p><strong>칼럼의 renderer 속성의 type 으로만 설정 가능합니다.</strong></p>
+<p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">아래는 설정 예제 입니다.</span>
+<div class="mxmlSyntax" id="mxmlSyntax"><pre>
+var columnLayout = [ {
+     dataField : "name",
+     headerText : "Name",
+     width : 140
+}, {
+     dataField : "quantity",
+     headerText : "Quantity",
+     width : 120,
+     renderer : {
+            type : "BarRenderer",
+            min : -100,
+            max : 100,
+            offset : 40
+      }
+}];
+</pre>
+</div>
+</div>
+</div>
+<div class="summarySection">
+<table id="summaryTableStyle" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>Name</th><th>Description</th>
+</tr>
+<tr id="max">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">max</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number<br>
+<p>바 게이지 축의 최대값을 지정합니다.</p>
+ 기본값(default) : <code>100</code>.</td>
+</tr>
+<tr id="min">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">min</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number<br>
+<p>바 게이지의 최소값을 지정합니다.</p>
+ 기본값(default) : <code>0</code>.</td>
+</tr>
+<tr id="offset">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">offset</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Number<br>
+<p>바 게이지의 값이 출력되는 텍스트의 좌우 여백을 지정합니다.</p>
+<p>기본적으로 칼럼 전체의 text-align 스타일을 따릅니다. 그러나 min, max 가 -100 ~ 100 사이 인 경우(즉, 0이라는 기준점이 있는 경우)
+게이지의 시작은 0 에서 음수와 양수 범위로 나뉘어 출력되고, 텍스트는 가운데 출력이 됩니다.</p>
+<p> 이 때 텍스트의 좌우 여백을 지정하여 좀 더 자연스러운 텍스트를 출력할 수 있습니다.</p>
+ 기본값(default) : <code>0</code>.</td>
+</tr>
+<tr id="showLabel">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">showLabel</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>Boolean<br>
+<p>바 게이지의 텍스트 출력 여부를 지정합니다.</p>
+ 기본값(default) : <code>true</code>.</td>
+</tr>
+<tr id="style">
+<td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<span class="signatureLink">style</span>
+</div>
+</td><td class="summaryTableDescription"><span class="label">Type : </span>String<br>
+<p>바 게이지의 스타일을 지정합니다.</p>
+<p>스타일은 CSS 에서 미리 선언된 CSS 클래스 선언자여야 합니다.</p>
+ 기본값(default) : <code>null</code>.</td>
+</tr>
+</table>
+</div>
+<div class="MainContent">
+<p></p>
+<center class="copyright">Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved</center>
+</div>
+</body>
+</html>
+<!--Copyright(c) 2022 AUISoft Co., Ltd. All Right Reserved-->

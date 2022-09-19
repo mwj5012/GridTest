@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="text/javascript" http-equiv="Content-Script-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta content="width=1200" name="viewport">
+<meta content="AUIGrid API Documentation" name="apple-mobile-web-app-title">
+<meta content="AUIGrid API Documentation" property="og:title">
+<meta content="https://www.auisoft.net/documentation/auigrid" property="og:url">
+<meta content="AUIGrid API Documentation" property="og:description">
+<meta content="AUIGrid API Documentation" name="keywords">
+<link rel="stylesheet" href="../static/style.css" type="text/css" media="screen">
+<title>VUE.js 에서 HTML5, Javascript Grid - AUIGrid 사용하기</title>
+<meta name="og:title" content="VUE.js 에서 HTML5, Javascript Grid - AUIGrid 사용하기"/>
+<meta name="og:url" content="https://www.auisoft.net/index.html"/>
+<link href="https://www.auisoft.net/aui.ico" rel="shortcut icon" />
+<meta name="og:description" content="VUE.js 에서 HTML5, Javascript Grid - AUIGrid 사용하기"/>
+<link rel=File-List href="chapter4.assets/filelist.xml">
+<link rel=themeData href="chapter4.assets/themedata.thmx">
+<link rel=colorSchemeMapping href="chapter4.assets/colorschememapping.xml">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:굴림;
+	panose-1:2 11 6 0 0 1 1 1 1 1;
+	mso-font-alt:Gulim;
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:variable;
+	mso-font-signature:-1342176593 1775729915 48 0 524447 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:"맑은 고딕";
+	panose-1:2 11 5 3 2 0 0 2 0 4;
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:variable;
+	mso-font-signature:-1879048145 701988091 18 0 524289 0;}
+@font-face
+	{font-family:굴림체;
+	panose-1:2 11 6 9 0 1 1 1 1 1;
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-1342176593 1775729915 48 0 524447 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536869121 64767 1 0 415 0;}
+@font-face
+	{font-family:"\@맑은 고딕";
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:variable;
+	mso-font-signature:-1879048145 701988091 18 0 524289 0;}
+@font-face
+	{font-family:"\@굴림";
+	panose-1:2 11 6 0 0 1 1 1 1 1;
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:variable;
+	mso-font-signature:-1342176593 1775729915 48 0 524447 0;}
+@font-face
+	{font-family:"\@굴림체";
+	mso-font-charset:129;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-1342176593 1775729915 48 0 524447 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:106%;
+	mso-pagination:none;
+	text-autospace:none;
+	word-break:break-hangul;
+	font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"머리글 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:106%;
+	mso-pagination:none;
+	tab-stops:center 225.65pt right 451.3pt;
+	layout-grid-mode:char;
+	text-autospace:none;
+	word-break:break-hangul;
+	font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-link:"바닥글 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:106%;
+	mso-pagination:none;
+	tab-stops:center 225.65pt right 451.3pt;
+	layout-grid-mode:char;
+	text-autospace:none;
+	word-break:break-hangul;
+	font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+code
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:굴림체;
+	mso-ascii-font-family:굴림체;
+	mso-fareast-font-family:굴림체;
+	mso-hansi-font-family:굴림체;
+	mso-bidi-font-family:굴림체;}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"미리 서식이 지정된 HTML Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:굴림체;
+	mso-bidi-font-family:굴림체;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"풍선 도움말 텍스트 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	text-autospace:none;
+	word-break:break-hangul;
+	font-size:9.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	mso-font-kerning:1.0pt;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:40.0pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:8.0pt;
+	mso-para-margin-left:4.0gd;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:106%;
+	mso-pagination:none;
+	text-autospace:none;
+	word-break:break-hangul;
+	font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+span.HTMLChar
+	{mso-style-name:"미리 서식이 지정된 HTML Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"미리 서식이 지정된 HTML";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:굴림체;
+	mso-ascii-font-family:굴림체;
+	mso-fareast-font-family:굴림체;
+	mso-hansi-font-family:굴림체;
+	mso-bidi-font-family:굴림체;
+	mso-font-kerning:0pt;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:굴림;
+	mso-bidi-font-family:굴림;}
+span.Char
+	{mso-style-name:"머리글 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:머리글;}
+span.Char0
+	{mso-style-name:"바닥글 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:바닥글;}
+span.Char1
+	{mso-style-name:"풍선 도움말 텍스트 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"풍선 도움말 텍스트";
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:9.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"맑은 고딕";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;}
+span.go
+	{mso-style-name:go;
+	mso-style-unhide:no;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-bidi-font-size:10.0pt;
+	font-family:"맑은 고딕";
+	mso-ascii-font-family:"맑은 고딕";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"맑은 고딕";
+	mso-hansi-font-family:"맑은 고딕";
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:0pt;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("chapter4.assets/header.html") fs;
+	mso-footnote-continuation-separator:url("chapter4.assets/header.html") fcs;
+	mso-endnote-separator:url("chapter4.assets/header.html") es;
+	mso-endnote-continuation-separator:url("chapter4.assets/header.html") ecs;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:3.0cm 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:556361886;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1575333406 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06C;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06E;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:60.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F075;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:80.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06C;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:100.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06E;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:120.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F075;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:140.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06C;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:160.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06E;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:180.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F075;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:200.0pt;
+	text-indent:-20.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+<body>
+<div class="header">
+<div id="logo-bar">
+<a href="../index.html"><img src="../images/auisoft.png" alt="AUISoft" title="AUISoft"></a>
+</div>
+<span id="title">AUIGrid 3.0.11 Documentation</span>
+</div>
+
+<div class="MainContent">
+<span class="className">&nbsp; </span>
+<div class=WordSection1>
+
+<p class=MsoNormal align=left style='text-align:left'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:106%;mso-ascii-font-family:
+"맑은 고딕";mso-ascii-theme-font:major-fareast;mso-fareast-font-family:"맑은 고딕";
+mso-fareast-theme-font:major-fareast;mso-hansi-font-family:"맑은 고딕";mso-hansi-theme-font:
+major-fareast'>Chapter 4. <span class=SpellE>AUIGrid.vue</span> </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+106%;mso-ascii-font-family:"맑은 고딕";mso-ascii-theme-font:major-fareast;
+mso-fareast-font-family:"맑은 고딕";mso-fareast-theme-font:major-fareast;
+mso-hansi-font-family:"맑은 고딕";mso-hansi-theme-font:major-fareast'>제외하고 <span
+class=SpellE><span lang=EN-US>AUIGrid</span></span><span lang=EN-US> </span>사용하기<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US>1. </span>사전
+필요 사항<span lang=EN-US><o:p></o:p></span></b></p>
+
+<p class=MsoNormal>사전 지식으로 다음을 충족하는 개발자에 해당되는 매뉴얼입니다<span lang=EN-US>.</span></p>
+
+<p class=MsoListParagraph style='margin-left:40.0pt;mso-para-margin-left:0gd;
+text-indent:-20.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span class=GramE><span lang=EN-US>AUIGrid</span></span></span><span
+class=GramE><span lang=EN-US> </span><span class=SpellE>를</span></span> 기존에 사용한
+개발자여야 합니다</p>
+
+<p class=MsoListParagraph style='margin-left:40.0pt;mso-para-margin-left:0gd;
+text-indent:-20.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+lang=EN-US>Node.js, Vue.js </span>에 대하여 최소한의 이해와 지식을 갖춘 개발자여야 합니다<span
+lang=EN-US>.</span></p>
+
+<p class=MsoListParagraph style='margin-left:40.0pt;mso-para-margin-left:0gd;
+text-indent:-20.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]>이전<span
+lang=EN-US> <span class=GramE>Chapter <span lang=EN-US><span lang=EN-US>를</span></span></span></span>
+필독한 개발자여야 합니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US>2. <span
+class=SpellE>AUIGrid.vue</span> </span>의 사용 목적<span lang=EN-US><o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>AUIGrid.vue</span></span><span
+lang=EN-US> </span>는 <span lang=EN-US>Vue.js </span>프레임워크 환경에서 사용자들이 쉽게 사용하기 위해
+작성된 컴포넌트입니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>Navtive</span></span><span
+lang=EN-US> <span class=SpellE>Javascript</span>(jQuery </span>포함<span
+lang=EN-US>) </span>환경에서는 <span lang=EN-US>DOM</span>에 직접적으로 접근하여 컨트롤 하는게 <span
+class=SpellE>일반적이였습니다</span><span lang=EN-US>. </span>그러나 <span lang=EN-US>Vue.js
+</span>는 프레임워크 구조 상 직접적으로 <span lang=EN-US>DOM</span>에 접근은 가능하나 권장하지 않습니다<span
+lang=EN-US>.</span></p>
+
+<p class=MsoNormal>다른 여러가지 방법으로 <span lang=EN-US>DOM</span>의 특정 <span
+class=SpellE>엘리먼트에</span> 접근하여 컨트롤 합니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal>여기서 <span class=SpellE><span lang=EN-US>AUIGrid.vue</span></span><span
+lang=EN-US> </span>는 <span lang=EN-US>Vue.js </span>의 <span lang=EN-US>ref </span>속성을
+통하여 접근하도록 하였습니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal>다음처럼 <span class=SpellE><span class=GramE><span lang=EN-US>AUIGrid</span></span></span><span
+class=GramE><span lang=EN-US> </span><span class=SpellE>를</span></span> 정의할 때 <span
+lang=EN-US>ref </span><span class=SpellE>를</span> 임의로 <span class=SpellE>지정합게</span>
+됩니다<span lang=EN-US>.<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=601 valign=top style='width:450.8pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-other;word-break:keep-all'><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;</span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>AUIGrid</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'> </span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>ref</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;<span
+  class=SpellE>myGrid</span>&quot;</span><span lang=EN-US style='font-size:
+  10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:
+  굴림;color:#D4D4D4;mso-font-kerning:0pt'> </span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>class</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;grid-wrap&quot;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-other;word-break:keep-all'><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;/</span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>AUIGrid</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:gray;mso-font-kerning:0pt'>&gt;<br style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]></span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal>그리고 다음처럼 접근할 수 있습니다<span lang=EN-US>.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=601 valign=top style='width:450.8pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-other;word-break:keep-all'><span
+  class=GramE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>$</span></span><span class=SpellE><span lang=EN-US style='font-size:
+  10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:
+  굴림;color:#9CDCFE;mso-font-kerning:0pt'>refs</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>myGrid</span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  style='font-size:10.5pt;font-family:굴림;mso-ascii-font-family:Consolas;
+  mso-hansi-font-family:Consolas;mso-bidi-font-family:굴림;color:#D4D4D4;
+  mso-font-kerning:0pt'>원하는</span><span style='font-size:10.5pt;font-family:
+  Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;
+  mso-font-kerning:0pt'> </span><span style='font-size:10.5pt;font-family:굴림;
+  mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+  굴림;color:#D4D4D4;mso-font-kerning:0pt'>메소드</span><span style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'> <span lang=EN-US><br style='mso-special-character:
+  line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]><o:p></o:p></span></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal>이와 같이 접근할 수 있도록 작성된 컴포넌트가 <span class=SpellE><span
+lang=EN-US>AUIGrid.vue</span></span><span lang=EN-US> </span>입니다<span
+lang=EN-US>.</span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US>3. <span
+class=SpellE>AUIGrid.vue</span> </span>제외하고 <span class=SpellE><span
+lang=EN-US>AUIGrid</span></span><span lang=EN-US> </span>작성하기<span lang=EN-US><o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>Native <span class=SpellE>Javascript</span>(jQuery
+</span>포함<span lang=EN-US>) </span>환경에서 작성하듯 <span class=GramE><span
+lang=EN-US>template </span>에서</span> 다음과 같이 <span lang=EN-US>div </span>태그를 작성합니다<span
+lang=EN-US>.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=601 valign=top style='width:450.8pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>template</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>div</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'> </span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>id</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;app&quot;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;</span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>img</span></span><span lang=EN-US style='font-size:10.5pt;font-family:
+  Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;
+  mso-font-kerning:0pt'> </span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#9CDCFE;mso-font-kerning:0pt'>alt</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;Vue
+  logo&quot;</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'> </span><span class=SpellE><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#9CDCFE;mso-font-kerning:0pt'>src</span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;./assets/logo.png&quot;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'> </span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>/&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span class=GramE><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#6A9955;mso-font-kerning:0pt'>&lt;!--</span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#6A9955;mso-font-kerning:0pt'> </span><span
+  class=SpellE><span style='font-size:10.5pt;font-family:굴림;mso-ascii-font-family:
+  Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:굴림;color:#6A9955;
+  mso-font-kerning:0pt'>에이유아이</span></span><span style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#6A9955;mso-font-kerning:0pt'> </span><span style='font-size:10.5pt;
+  font-family:굴림;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+  mso-bidi-font-family:굴림;color:#6A9955;mso-font-kerning:0pt'>그리드가</span><span
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#6A9955;mso-font-kerning:0pt'> </span><span
+  style='font-size:10.5pt;font-family:굴림;mso-ascii-font-family:Consolas;
+  mso-hansi-font-family:Consolas;mso-bidi-font-family:굴림;color:#6A9955;
+  mso-font-kerning:0pt'>이곳에</span><span style='font-size:10.5pt;font-family:
+  Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#6A9955;
+  mso-font-kerning:0pt'> </span><span style='font-size:10.5pt;font-family:굴림;
+  mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+  굴림;color:#6A9955;mso-font-kerning:0pt'>생성됩니다</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#6A9955;mso-font-kerning:0pt'>. --&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>div</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>id</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;<span
+  class=SpellE>grid_wrap</span>&quot;</span><span lang=EN-US style='font-size:
+  10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:
+  굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>style</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>=</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;width:1200px;
+  height:480px; margin:0 auto;&quot;</span><span lang=EN-US style='font-size:
+  10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:
+  굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;&lt;/</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>div</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;/</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>div</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&lt;/</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>template</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:gray;mso-font-kerning:0pt'>&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>위의 <span lang=EN-US>div </span>태그에 <span class=GramE><span
+lang=EN-US>id </span>를</span> <span lang=EN-US>“<span class=SpellE>grid_wrap</span>”
+</span>이라고 정의한 모습입니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal>다음과 같이 <span lang=EN-US>mounted </span>라이프 사이클에서 그리드를 생성할 수 있습니다<span
+lang=EN-US>.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=601 valign=top style='width:450.8pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:0pt'>mounted</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>:</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'> </span><span
+  class=GramE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>function</span><span lang=EN-US style='font-size:10.5pt;font-family:
+  Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;
+  mso-font-kerning:0pt'>(</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>) {<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span class=SpellE><span
+  class=GramE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>myGridID</span></span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'> = </span><span class=SpellE><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>window</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>AUIGrid</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:0pt'>create</span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>(</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#CE9178;mso-font-kerning:0pt'>&quot;#<span
+  class=SpellE>grid_wrap</span>&quot;</span><span lang=EN-US style='font-size:
+  10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:
+  굴림;color:#D4D4D4;mso-font-kerning:0pt'>, </span><span class=SpellE><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>this</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>columnLayout</span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>, </span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>gridProps</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>);<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span class=SpellE><span
+  class=GramE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>window</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>AUIGrid</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:
+  0pt'>setGridData</span></span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>(</span><span class=SpellE><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:0pt'>this</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>myGridID</span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>, </span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>gridData</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>);<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>},<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:
+  0pt'>beforeDestroy</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#9CDCFE;mso-font-kerning:0pt'>:</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'> </span><span
+  class=GramE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>function</span><span lang=EN-US style='font-size:10.5pt;font-family:
+  Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;
+  mso-font-kerning:0pt'>(</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>) {<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#C586C0;mso-font-kerning:0pt'>if</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'> (</span><span
+  class=SpellE><span class=GramE><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#9CDCFE;mso-font-kerning:0pt'>window</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>AUIGrid</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:0pt'>isCreated</span></span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>(</span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>myGridID</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>))<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+  class=SpellE><span class=GramE><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#9CDCFE;mso-font-kerning:0pt'>window</span><span lang=EN-US
+  style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:굴림;
+  mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:0pt'>AUIGrid</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>.</span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#DCDCAA;mso-font-kerning:0pt'>destroy</span></span></span><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>(</span><span
+  class=SpellE><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#569CD6;mso-font-kerning:
+  0pt'>this</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:
+  0pt'>.</span><span lang=EN-US style='font-size:10.5pt;font-family:Consolas;
+  mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;color:#9CDCFE;mso-font-kerning:
+  0pt'>myGridID</span></span><span lang=EN-US style='font-size:10.5pt;
+  font-family:Consolas;mso-fareast-font-family:굴림;mso-bidi-font-family:굴림;
+  color:#D4D4D4;mso-font-kerning:0pt'>);<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:14.25pt;mso-pagination:widow-orphan;background:
+  #1E1E1E;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all'><span
+  lang=EN-US style='font-size:10.5pt;font-family:Consolas;mso-fareast-font-family:
+  굴림;mso-bidi-font-family:굴림;color:#D4D4D4;mso-font-kerning:0pt'>}</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US>SPA </span>프로젝트로 구성된 경우 동적으로 <span
+class=GramE><span lang=EN-US>Vue </span>의</span> 컴포넌트는 생성되고<span lang=EN-US>, </span>제거
+될 것입니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal>이 때 <span class=SpellE><span lang=EN-US>AUIGrid</span></span><span
+lang=EN-US> </span>도 동일하게 제거하기 위해 <span class=SpellE><span lang=EN-US>beforeDestroy</span></span><span
+lang=EN-US> </span>라이프 사이클에서 제거하고 있습니다<span lang=EN-US>.</span></p>
+
+<p class=MsoNormal>이를 잊지 마시고 제거하십시오<span lang=EN-US>.</span></p>
+
+</div>
+</div>
+</body>
+
+</html>
