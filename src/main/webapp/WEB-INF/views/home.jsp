@@ -49,6 +49,43 @@
 	
 	<script type="text/javascript">
 	
+	</script>
+
+	<title>Home</title>
+</head>
+<body>
+	<div><a href="/grid">Home</a></div>
+
+	<h3>그리드 생성</h3>
+	
+	<div id="grid_wrap" style="width: 900px; height: 480px;"></div>
+	
+	<br>
+	
+	<div>
+		<button id="excelDownload" onclick="exportToLocal()">Excel Download</button>
+		<button id="pdfDownload" onclick="exportPdfClick()">PDF Download</button>
+	</div>
+	
+	<br>
+	
+	<div>
+		<button id="cellMergeRowSpan" onclick="cellMergeRowSpan()">셀 세로 병합</button>
+		<button id="cellMergeColumnSpan" onclick="cellMergeColumnSpan()">셀 가로 병합</button>
+		<button id="crudTest">CRUD 테스트</button>
+		<button id="createGrid">그리드 생성</button>
+	</div>
+	
+	<br>
+	
+	<div>
+		<button onclick="jsExam()">JS 예제</button>
+		<button id="sc">선사 관리</button>
+	</div>
+	
+	
+	<script type="text/javascript">
+	
 	// AUIGrid 메소드 확인
 	// console.log(AUIGrid);
 	
@@ -241,64 +278,54 @@
 		     }
 		});
 	};
-	</script>
-
-	<title>Home</title>
-</head>
-<body>
-	<div><a href="/grid">Home</a></div>
-
-	<h3>그리드 생성</h3>
-	
-	<div id="grid_wrap" style="width: 900px; height: 480px;"></div>
-	
-	<br>
-	
-	<div>
-		<button id="excelDownload" onclick="exportToLocal()">Excel Download</button>
-		<button id="pdfDownload" onclick="exportPdfClick()">PDF Download</button>
-	</div>
-	
-	<br>
-	
-	<div>
-		<button id="cellMergeRowSpan" onclick="cellMergeRowSpan()">셀 세로 병합</button>
-		<button id="cellMergeColumnSpan" onclick="cellMergeColumnSpan()">셀 가로 병합</button>
-		<button id="crudTest">CRUD 테스트</button>
-		<button id="createGrid">그리드 생성</button>
-	</div>
 	
 	
-	<script type="text/javascript">
+	
+	
+	
+	
 	/* 셀 병합 */
 	function cellMergeRowSpan() {
 		console.log("셀 세로 병합");
 		
-		location.replace("./cellMerge/rowSpan");
+		location.href = "./cellMerge/rowSpan";
 	}
 	
 	function cellMergeColumnSpan() {
 		console.log("셀 가로 병합");
 		
-		location.replace("./cellMerge/columnSpan");
+		location.href = "./cellMerge/columnSpan";
 	}
 	
 	/* crud 테스트 */
 	var crudTest = document.getElementById("crudTest");
 	
 	crudTest.addEventListener("click", function(e) {
-		console.log();
 		
-		location.replace("./crud/crud");
+		location.href = "./crud/crud";
 	});
 	
 	/* 그리드 생성 */
 	var crudTest = document.getElementById("createGrid");
 	
 	crudTest.addEventListener("click", function(e) {
-		console.log();
 		
-		location.replace("./crud/createGrid");
+		location.href  = "./crud/createGrid";
+	});
+	
+	
+	/* js 예제 */
+	function jsExam() {
+		location.href = "./jsExam/jsExam";
+	}
+	
+	
+	/* 선사 관리 */
+	var sc = document.getElementById("sc");
+	
+	sc.addEventListener("click", function() {
+		
+		location.href = "./exam/shippingCompanyMng";
 	});
 	
 	

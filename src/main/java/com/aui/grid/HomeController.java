@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Handles requests for the application home page.
@@ -78,5 +80,31 @@ public class HomeController {
 	public String createGrid() {
 		
 		return "/crud/createGrid";
+	}
+	
+	
+	
+	
+	
+	/* JS 예제 */
+	@RequestMapping(value = "/jsExam/jsExam", method = RequestMethod.GET)
+	@ResponseBody
+	public String jsExam(@RequestParam("value1") String value1, @RequestParam("value2") int value2) {
+		System.out.println("테스트1 : " + value1 + ", " + "테스트2 : " + value2);
+		
+		return "/jsExam/jsExam";
+	}
+	
+	
+	
+	
+	/*
+	 * 선사 관리
+	 */
+	@RequestMapping(value="/exam/shippingCompanyMng", method = RequestMethod.GET)
+	public String scMng() {
+		System.out.println("선사 관리 페이지");
+		
+		return "/exam/shippingCompanyMng";
 	}
 }
